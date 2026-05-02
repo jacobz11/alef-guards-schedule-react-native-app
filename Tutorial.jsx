@@ -31,8 +31,8 @@ const STEPS = [
     iconColor: "#6366f1",
     body: "כל יום בסידור מציג שתי משמרות. לחיצה על אחד הכפתורים פותחת רשימת עובדים לבחירה. ניתן לנקות שיבוץ קיים מתוך אותה רשימה.",
     bullets: [
-      { icon: "weather-sunny", color: "#2d6a4f", text: "משמרת בוקר" },
-      { icon: "weather-night", color: "#7209b7", text: "משמרת לילה" },
+      { icon: "weather-sunny", color: "#faa307", text: "משמרת בוקר" },
+      { icon: "weather-night", color: "#00b4d8", text: "משמרת לילה" },
     ],
     note: "המערכת תחסום שיבוץ של אותו עובד במשמרות סמוכות (לילה ואז בוקר למחרת).",
   },
@@ -45,7 +45,7 @@ const STEPS = [
       { icon: "chevron-right", color: "#6366f1", text: "מעבר לשבוע הקודם" },
       { icon: "whatsapp", color: "#25D366", text: "שיתוף הסידור כתמונה" },
       {
-        icon: "content-copy",
+        icon: "content-duplicate",
         color: "#6366f1",
         text: "שכפול הסידור לשבוע הבא",
       },

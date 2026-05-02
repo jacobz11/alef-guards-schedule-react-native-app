@@ -818,15 +818,22 @@ export default function App() {
           savedAt: serverTimestamp(),
           days: newDays,
         });
-        setAvailableWeeks((prev) => {
-          if (prev.includes(nextWeekStart)) return prev;
-          return [...prev, nextWeekStart].sort(
-            (a, b) => parseWeekStart(a) - parseWeekStart(b),
-          );
-        });
         await enforceShiftLimit();
       }
       Toast.show({ type: "success", text1: strings.duplicateSuccess });
+      // Navigate to the duplicated week after the toast has time to display
+      setTimeout(() => {
+        setAvailableWeeks((prev) => {
+          const updated = prev.includes(nextWeekStart)
+            ? prev
+            : [...prev, nextWeekStart].sort(
+                (a, b) => parseWeekStart(a) - parseWeekStart(b),
+              );
+          const idx = updated.indexOf(nextWeekStart);
+          if (idx >= 0) setWeekIdx(idx);
+          return updated;
+        });
+      }, 1200);
     } catch (e) {
       Toast.show({ type: "error", text1: strings.duplicateError });
     }
@@ -1080,7 +1087,7 @@ export default function App() {
               >
                 <Text style={styles.fabText}>{strings.duplicate}</Text>
                 <MaterialCommunityIcons
-                  name="content-copy"
+                  name="content-duplicate"
                   size={16}
                   color="#6366f1"
                 />
@@ -1294,7 +1301,7 @@ const strings = {
   scheduleDeleteError: "שגיאה במחיקת הסידור",
   scheduleAlreadyEmpty: "הסידור כבר ריק",
   nothingToDuplicate: "אין סידור לשכפול",
-  duplicateSuccess: "הסידור שוכפל",
+  duplicateSuccess: "הסידור שוכפל לשבוע הבא",
   duplicateError: "שגיאה בשכפול הסידור",
   scheduleDeleteTitle: "מחיקת הסידור",
   scheduleDeleteMessage: "האם למחוק את כל המשמרות של השבוע הנוכחי?",
