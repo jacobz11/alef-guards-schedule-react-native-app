@@ -1430,7 +1430,7 @@ const styles = StyleSheet.create({
   },
   pickerBox: {
     backgroundColor: "#FFF",
-    borderRadius: rw(50),
+    borderRadius: rw(25),
     paddingVertical: rh(16),
     paddingHorizontal: rw(28),
     minWidth: rw(220),
